@@ -6,7 +6,7 @@ export const ALLUSERSPROFILE = "C:\\ProgramData";
 export const APPDATA = "C:\\Users\\PC\\AppData\\Roaming";
 
 /** @type {import('$env/static/private').CHROME_CRASHPAD_PIPE_NAME} */
-export const CHROME_CRASHPAD_PIPE_NAME = "\\\\.\\pipe\\crashpad_9844_BJLSEMAULVWUXQIZ";
+export const CHROME_CRASHPAD_PIPE_NAME = "\\\\.\\pipe\\crashpad_7524_UIIYUHXTRVGGADLR";
 
 /** @type {import('$env/static/private').COLOR} */
 export const COLOR = "1";
@@ -48,7 +48,7 @@ export const HOMEDRIVE = "C:";
 export const HOMEPATH = "\\Users\\PC";
 
 /** @type {import('$env/static/private').INIT_CWD} */
-export const INIT_CWD = "C:\\Users\\PC\\Desktop\\cofounders";
+export const INIT_CWD = "C:\\Users\\PC\\Desktop\\cogit\\cofounders";
 
 /** @type {import('$env/static/private').LANG} */
 export const LANG = "en_US.UTF-8";
@@ -87,7 +87,7 @@ export const npm_config_global_prefix = "C:\\Users\\PC\\AppData\\Roaming\\npm";
 export const npm_config_init_module = "C:\\Users\\PC\\.npm-init.js";
 
 /** @type {import('$env/static/private').npm_config_local_prefix} */
-export const npm_config_local_prefix = "C:\\Users\\PC\\Desktop\\cofounders";
+export const npm_config_local_prefix = "C:\\Users\\PC\\Desktop\\cogit\\cofounders";
 
 /** @type {import('$env/static/private').npm_config_metrics_registry} */
 export const npm_config_metrics_registry = "https://registry.npmjs.org/";
@@ -120,7 +120,7 @@ export const npm_lifecycle_script = "vite dev";
 export const npm_node_execpath = "C:\\Program Files\\nodejs\\node.exe";
 
 /** @type {import('$env/static/private').npm_package_json} */
-export const npm_package_json = "C:\\Users\\PC\\Desktop\\cofounders\\package.json";
+export const npm_package_json = "C:\\Users\\PC\\Desktop\\cogit\\cofounders\\package.json";
 
 /** @type {import('$env/static/private').npm_package_name} */
 export const npm_package_name = "co";
@@ -144,7 +144,7 @@ export const ORIGINAL_XDG_CURRENT_DESKTOP = "undefined";
 export const OS = "Windows_NT";
 
 /** @type {import('$env/static/private').Path} */
-export const Path = "C:\\Users\\PC\\Desktop\\cofounders\\node_modules\\.bin;C:\\Users\\PC\\Desktop\\node_modules\\.bin;C:\\Users\\PC\\node_modules\\.bin;C:\\Users\\node_modules\\.bin;C:\\node_modules\\.bin;C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\@npmcli\\run-script\\lib\\node-gyp-bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\nodejs\\;C:\\Users\\PC\\anaconda3;C:\\Users\\PC\\anaconda3\\Library\\mingw-w64\\bin;C:\\Users\\PC\\anaconda3\\Library\\usr\\bin;C:\\Users\\PC\\anaconda3\\Library\\bin;C:\\Users\\PC\\anaconda3\\Scripts;C:\\Users\\PC\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\PC\\AppData\\Roaming\\npm;C:\\Users\\PC\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\PC\\AppData\\Local\\GitHubDesktop\\bin";
+export const Path = "C:\\Users\\PC\\Desktop\\cogit\\cofounders\\node_modules\\.bin;C:\\Users\\PC\\Desktop\\cogit\\node_modules\\.bin;C:\\Users\\PC\\Desktop\\node_modules\\.bin;C:\\Users\\PC\\node_modules\\.bin;C:\\Users\\node_modules\\.bin;C:\\node_modules\\.bin;C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\@npmcli\\run-script\\lib\\node-gyp-bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\nodejs\\;C:\\Users\\PC\\anaconda3;C:\\Users\\PC\\anaconda3\\Library\\mingw-w64\\bin;C:\\Users\\PC\\anaconda3\\Library\\usr\\bin;C:\\Users\\PC\\anaconda3\\Library\\bin;C:\\Users\\PC\\anaconda3\\Scripts;C:\\Users\\PC\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\PC\\AppData\\Roaming\\npm;C:\\Users\\PC\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\PC\\AppData\\Local\\GitHubDesktop\\bin";
 
 /** @type {import('$env/static/private').PATHEXT} */
 export const PATHEXT = ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL";

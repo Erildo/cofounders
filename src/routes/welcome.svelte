@@ -1,7 +1,7 @@
 
 <script>
 	import { supabase } from '$lib/supabaseClient';
-	import {PUBLIC_NAME} from '$env/static/public'
+	import {PUBLIC_NAME,PUBLIC_DISCORD_URL,PUBLIC_GITHUB_URL} from '$env/static/public'
 
 	// @ts-nocheck
 	let loading = false;
@@ -84,14 +84,14 @@
 	</div>
 	
 	<div class="justify-center items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-        <a href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+        <a href={PUBLIC_GITHUB_URL} class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
 			<ion-icon class="w-7 h-7 mr-3" name="logo-github"></ion-icon>
 	            <div class="text-left">
                 <div class="mb-1 text-xs">Find us </div>
                 <div class="-mt-1 font-sans text-sm font-semibold">on Github</div>
             </div>
         </a>
-        <a href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+        <a href={PUBLIC_DISCORD_URL} class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
              <ion-icon class="mr-3 w-7 h-7" name="logo-discord"></ion-icon>
             <div class="text-left">
                 <div class="mb-1 text-xs">Join us also </div>
@@ -138,20 +138,20 @@
 
   <footer id="footer" class="p-4 bg-white md:p-8 lg:p-10 dark:bg-gray-800">
 	<div class="mx-auto max-w-screen-xl text-center">
-		<a href="#" class="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white">
+		<a href="./" class="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white">
 			
 			<ion-icon name="rocket-sharp"></ion-icon> {PUBLIC_NAME}    
 		</a>
 		<p class="my-6 text-gray-500 dark:text-gray-400">Open-source matching platform built to find co-founders,jobs and increase your networking circle.</p>
 		<ul class="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">
 			<li>
-				<a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+				<a href="./" class="mr-4 hover:underline md:mr-6 ">About</a>
 			</li>
 			<li>
-				<a href="#" class="mr-4 hover:underline md:mr-6 ">Github</a>
+				<a href={PUBLIC_GITHUB_URL} class="mr-4 hover:underline md:mr-6 ">Github</a>
 			</li>
 			<li>
-				<a href="#" class="mr-4 hover:underline md:mr-6 ">Discord</a>
+				<a href={PUBLIC_DISCORD_URL} class="mr-4 hover:underline md:mr-6 ">Discord</a>
 			</li>
 			<li>
 				<a href="#" class="mr-4 hover:underline md:mr-6">Contact</a>

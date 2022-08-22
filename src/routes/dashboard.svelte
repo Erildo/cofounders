@@ -4,13 +4,14 @@
 	import { session } from '$app/stores';
 
 	import { supabase } from '$lib/supabaseClient';
-	import { PUBLIC_NAME } from '$env/static/public';
+	import { PUBLIC_NAME,PUBLIC_DISCORD_URL,PUBLIC_GITHUB_URL } from '$env/static/public';
 
 	import Index from './index.svelte';
 	import Profile from './profile.svelte';
 	import LeftSide from './leftSide.svelte';
 	import Settings from './settings.svelte';
 	import Startups from './startups.svelte';
+	import Connections from './connections.svelte';
 	import NotFound from './404.svelte';
 
 	let full_name, avatar;
@@ -73,7 +74,7 @@
 							rightPage = page;
 						}}
 						class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
-						href="#"
+						href="./"
 					>
 						<ion-icon name={icon} />
 						<span class="mx-4 font-medium">{name}</span>
@@ -83,7 +84,7 @@
 						<a
 							on:click={signout}
 							class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
-							href="#"
+							href="./"
 						>
 							<ion-icon name="log-in-sharp" />
 							<span class="mx-4 font-medium">Sign Out</span>
@@ -116,12 +117,9 @@
 				</p>
 				<a
 					class="text-sm text-blue-900 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
-					href="#">Github</a
+					href={PUBLIC_GITHUB_URL}>Github</a
 				>
-				<a
-					class="text-sm text-blue-900 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
-					href="#">Discord</a
-				>
+				
 			</div>
 
 			<div class="flex items-center px-4 -mx-2">
@@ -140,11 +138,13 @@
 			<Settings />
 		{:else if rightPage == 'Startups'}
 			<Startups />
+			{:else if rightPage == 'Connections'}
+			<Connections />
 		{:else}
 			<NotFound />
 		{/if}
 	</div>
 	<div name="left" class=" bg-gray-100">
-		<LeftSide />
+		<!-- <LeftSide /> -->
 	</div>
 </div>

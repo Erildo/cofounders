@@ -5,6 +5,7 @@
 
 	import { supabase } from '$lib/supabaseClient';
 	import { onMount } from 'svelte';
+	import Skeleton from './skeleton.svelte';
 
 	let full_name = '';
 	let avatar;
@@ -110,25 +111,32 @@
 			class="relative mt-4 max-w-md  md:max-w-2xl  min-w-0 break-words mx-auto bg-gray-50 shadow-lg rounded-xl "
 		>
 			<div class="px-6">
-				<div class="flex flex-wrap justify-center">
+				<div class="flex flex-wrap justify-center mt-20">
 					<div class="w-full flex justify-center">
-						<div class="relative mt-4">
-							<img src={avatar} class="w-50 h-50 rounded " alt="" />
+						<div class="relative">
+							<img
+								src={avatar}
+								alt=""
+								class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 min-w-[150px]"
+							/>
 						</div>
 					</div>
-					<div class="w-full text-center ">
-						<div class="flex justify-center lg:pt-4 pt-2 pb-0">
-							<div class=" text-center">
-								<a href={url} target="_blank">
-									<ion-icon name="logo-linkedin" class="w-5 h-5" />
+					<div class="w-full text-center mt-20">
+						<a href={url} target="_blank">
+							<ion-icon name="logo-linkedin" class="w-5 h-5 mt-4" />
 
-									<span class=" text-slate-900 font-semibold ">Linkedin</span></a
-								>
+							<span class=" text-slate-900 font-semibold ">Linkedin</span></a
+						>
+						<div class="flex justify-center lg:pt-4 pt-8 pb-0 font-semibold">
+							<div class="p-3 text-center ">
+								<span class="text-sm text-slate-400">{my_role}</span>
+							</div>
+							<div class="p-3 text-center">
+								<span class="text-sm text-slate-400">{category}</span>
 							</div>
 
 							<div class="p-3 text-center">
-								<span class="text-xl font-bold block uppercase tracking-wide text-slate-700" />
-								<span class="text-sm text-slate-400" />
+								<span class="text-sm text-slate-400">{my_interest}</span>
 							</div>
 						</div>
 					</div>
@@ -136,54 +144,12 @@
 				<div class="text-center mt-2">
 					<h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">{full_name}</h3>
 					<div class="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
-						<i class="fas fa-map-marker-alt mr-2 text-slate-400 opacity-75" />{location},{grad_year}
+						<i class="fas fa-map-marker-alt mr-2 text-slate-400 opacity-75" />{location}, {grad_year}
 					</div>
-					<button
-						on:click={connect}
-						class="w-32 bg-white tracking-wide text-gray-800 font-bold rounded border-b-2 border-blue-500 hover:border-blue-600 hover:bg-blue-500 hover:text-white shadow-md py-2 px-2 inline-flex items-center"
-					>
-						<span class="mx-auto">Connect</span>
-					</button>
-
-					<button
-						on:click={next}
-						class="w-32 bg-white tracking-wide text-gray-800 font-bold rounded border-b-2 border-red-500 hover:border-red-600 hover:bg-red-500 hover:text-white shadow-md py-2 px-2 inline-flex items-center"
-					>
-						<span class="mx-auto">Next</span>
-					</button>
+					<span class="font-semibold">{idea}</span> <ion-icon name="rocket-outline" /> 
 				</div>
 				<div class="mt-6 py-6 border-t border-slate-200 ">
 					<div class="flex flex-wrap px-4">
-						<div name="left">
-							<ul class="leading-relaxed text-slate-900 mb-4">
-								<li>
-									<span class="font-semibold">Responsibilities:</span>
-									<span
-										class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300"
-									>
-										{my_role}
-									</span>
-									<span class="font-semibold">Category:</span>
-									<span
-										class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300"
-										>{category}</span
-									>
-								</li>
-								<li>
-									<span class="font-semibold">I am looking for:</span>
-									<span
-										class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300"
-									>
-										{my_interest},
-									</span>
-								</li>
-								<li>
-									<span class="font-semibold">{idea}</span> <ion-icon name="rocket-outline" /> have an
-									idea
-								</li>
-							</ul>
-						</div>
-
 						<div class="w-full leading-relaxed text-slate-900 mb-4 ">
 							<h3 class="font-bold">Co-Founder Preferences:</h3>
 							<div class="flex mb-2">
@@ -217,88 +183,16 @@
 								value={message}
 							/>
 						</div>
+						<div class="w-full px-4 text-center">
+
+						<a href="./" on:click={connect} class="font-normal text-slate-700 hover:text-slate-400">Connect</a> /
+						<a href="./" on:click={next} class="font-normal text-slate-700 hover:text-slate-400">Next</a>
+					</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	{:else}
-		<div role="status" class="mt-20 space-y-2.5 animate-pulse max-w-lg mx-auto">
-			<div class="flex items-center space-x-2 w-full">
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-			</div>
-			<div class="flex items-center w-full space-x-2 max-w-[480px]">
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24" />
-			</div>
-			<div class="flex items-center w-full space-x-2 max-w-[400px]">
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-			</div>
-			<div class="flex items-center w-full space-x-2 max-w-[480px]">
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24" />
-			</div>
-			<div class="flex items-center w-full space-x-2 max-w-[440px]">
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-32" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24" />
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full" />
-			</div>
-			<div class="flex items-center w-full space-x-2 max-w-[360px]">
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-			</div>
-			<div class="flex items-center w-full space-x-2 max-w-[360px]">
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-			</div>
-			<div class="flex items-center w-full space-x-2 max-w-[360px]">
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-			</div>
-			<div class="flex items-center w-full space-x-2 max-w-[480px]">
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24" />
-			</div>
-			<div class="flex items-center w-full space-x-2 max-w-[400px]">
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-			</div>
-			<div class="flex items-center w-full space-x-2 max-w-[480px]">
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24" />
-			</div>
-			<div class="flex items-center w-full space-x-2 max-w-[360px]">
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-			</div>
-			<div class="flex items-center w-full space-x-2 max-w-[480px]">
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24" />
-			</div>
-			<div class="flex items-center w-full space-x-2 max-w-[400px]">
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-			</div>
-			<div class="flex items-center w-full space-x-2 max-w-[480px]">
-				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full" />
-				<div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24" />
-			</div>
-			<span class="sr-only">Loading...</span>
-		</div>
+		<Skeleton />
 	{/if}
 </div>

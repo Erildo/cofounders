@@ -5,6 +5,7 @@
 
 	import { supabase } from '$lib/supabaseClient';
 	import { onMount } from 'svelte';
+	import Skeleton from './skeleton.svelte';
 	let url,
 		category = '',
 		stage,
@@ -14,17 +15,22 @@
 		name,
 		teams,
 		uid,
+		created_at,
 		pitchUrl;
+
+	let coArr = [''];
 	let i = 0;
 	const user = supabase.auth.user();
-	const getAllQ = supabase.from('company').select('*');
-	const mineQ = supabase.from('company').select('*').filter('uid','eq',user.id);
+	const getAllQ = supabase.from('companyview').select('*');
+	const mineQ = supabase.from('companyview').select('*').filter('uid', 'eq', user.id);
 
 	async function getCompanies(query) {
 		try {
 			let { data, error, status } = await query;
 			if (error) throw error;
 			if (data) {
+				// getData(data)
+				coArr = data;
 				console.log(data);
 			}
 		} catch (error) {
@@ -32,22 +38,23 @@
 		}
 	}
 	async function filter() {
-		this['query' + i] = supabase.from('company').select('*').filter('category', 'eq', category);
+		this['query' + i] = supabase.from('companyview').select('*').filter('category', 'eq', category);
 		await getCompanies(this['query' + i]);
 		i = i + 1;
 	}
-	async function getData(data) {
-		uid = data.id;
-		url = data.url;
-		name = data.name;
-		category = data.category;
-		problem = data.problem;
-		solution = data.solution;
-		compesation = data.compesation;
-		teams = data.teams;
-		stage = data.stage;
-		pitchUrl = data.pitchUrl;
-	}
+	// async function getData(data) {
+	// 	uid = data.id;
+	// 	url = data.url;
+	// 	created_at = data.created_at;
+	// 	name = data.name;
+	// 	category = data.category;
+	// 	problem = data.problem;
+	// 	solution = data.solution;
+	// 	compesation = data.compesation;
+	// 	teams = data.teams;
+	// 	stage = data.stage;
+	// 	pitchUrl = data.pitchUrl;
+	// }
 	async function getAll() {
 		await getCompanies(getAllQ);
 	}
@@ -94,11 +101,12 @@
 	];
 </script>
 
-<div class="dark ml-20 mt-10">
+<div class="dark ml-10 mt-10">
 	<nav class="flex" aria-label="Breadcrumb">
 		<ol class="inline-flex items-center space-x-1 md:space-x-3">
 			<li class="inline-flex items-center">
-				<a on:click={getAll}
+				<a
+					on:click={getAll}
 					href="./"
 					class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-800 dark:hover:text-white"
 				>
@@ -116,7 +124,8 @@
 			</li>
 			<li>
 				<div class="flex items-center">
-					<a on:click={mine}
+					<a
+						on:click={mine}
 						href="./"
 						class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-800 dark:hover:text-white"
 						>Mine</a
@@ -126,7 +135,7 @@
 			<li aria-current="page">
 				<div class="flex items-center">
 					<a
-						href="#"
+						href="./addCompany"
 						class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-800 dark:hover:text-white"
 						>Add</a
 					>
@@ -148,55 +157,79 @@
 	</nav>
 </div>
 
-<div class="mt-10" use:getCompanies>
-	<div class="max-w-2xl px-8 py-4 mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
-		<div class="flex items-center justify-between">
-			<span class="text-sm font-light text-gray-600 dark:text-gray-400">Mar 10, 2019</span>
-			<a
-				class="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500"
-				>Design</a
-			>
-		</div>
+<div class="mt-10" use:getAll>
+	{#if coArr.length > 0}
+		{#each coArr as dt}
+			<div class="max-w-2xl px-8 py-4 mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 mt-2">
+				
 
-		<div class="mt-2">
-			<a
-				href="#"
-				class="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline"
-				>Accessibility tools for designers and developers</a
-			>
-			<p class="mt-2 text-gray-600 dark:text-gray-300">
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam
-				aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus
-				nihil quis facere in modi ratione libero!
-			</p>
-		</div>
+				<div >
+					<div class="flex flex-rows ">
+						<span
+							class="col-span-5 text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 "
+							>{dt.name}</span
+						>
+						<span class="text-sm font-semibold px-4 py-1 text-gray-800 rounded-full bg-green-300 ml-20"
+						>{dt.stage}</span>
+						<span
+						class="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500"
+						>{dt.category}</span
+					>
+					</div>
 
-		<div class="flex items-center justify-between mt-4">
-			<div class="flex text-slate-500 cursor-pointer items-center transition hover:text-slate-600">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="mr-1.5 h-5 w-5"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-					stroke-width="2"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
-					/>
-				</svg>
-				<span>4</span>
-			</div>
-			<div class="flex items-center">
-				<img
-					class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
-					src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80"
-					alt="avatar"
+				<div class="flex flex-row">
+					{#if dt.url}
+						<a
+							href={dt.url}
+							class="inline-flex justify-center items-center p-2 text-base font-medium text-gray-500 bg-gray-50 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white"
+						>
+							<ion-icon class="h-7 w-7" name="link-outline" /><span class="ml-2 w-full"> Url</span>
+						</a>
+					{/if}
+					<span class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300">
+						<a href={dt.pitchUrl}>Pitch Deck</a></span>
+					<span class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300">
+					{dt.compesation}</span>
+				</div>
+					<textarea
+					class="mt-1 text-gray-600 dark:text-gray-300 bg-gray-800"
+					id="outputText"
+					rows="3"
+					style="resize:none"
+					cols="80"
+					wrap="on"
+					readonly
+					value={dt.solution}
 				/>
-				<a class="font-bold text-gray-700 cursor-pointer dark:text-gray-200">Khatab wedaa</a>
+					
+				</div>
+
+				<div class="flex items-center justify-between mt-1">
+					<button
+						class="px-2 py-1 bg-transparent outline-none border-2 
+			border-indigo-300 rounded text-indigo-300 font-medium 
+			active:scale-95 hover:bg-indigo-500 hover:text-white hover:border-transparent 
+			focus:bg-indigo-500 focus:text-white focus:border-transparent focus:ring-2 
+			focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-gray-400/80 
+			disabled:shadow-none disabled:cursor-not-allowed transition-colors duration-200"
+					>
+						Join this team</button
+					>
+
+					<div class="flex items-center">
+						<img
+							class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
+							src={dt.avatar}
+							alt="avatar"
+						/>
+						<span class="font-bold text-gray-700 cursor-pointer dark:text-gray-200"
+							>{dt.full_name}</span
+						>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
+		{/each}
+	{:else}
+		<Skeleton />
+	{/if}
 </div>

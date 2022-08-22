@@ -12,6 +12,7 @@ export const components = [
 	() => import("..\\..\\src\\routes\\leftSide.svelte"),
 	() => import("..\\..\\src\\routes\\profile.svelte"),
 	() => import("..\\..\\src\\routes\\settings.svelte"),
+	() => import("..\\..\\src\\routes\\skeleton.svelte"),
 	() => import("..\\..\\src\\routes\\startups.svelte"),
 	() => import("..\\..\\src\\routes\\welcome.svelte")
 ];
@@ -26,6 +27,7 @@ export const dictionary = {
 	"leftSide": [[0, 8], [1]],
 	"profile": [[0, 9], [1]],
 	"settings": [[0, 10], [1]],
-	"startups": [[0, 11], [1]],
-	"welcome": [[0, 12], [1]]
+	"skeleton": [[0, 11], [1]],
+	"startups": [[0, 12], [1]],
+	"welcome": [[0, 13], [1]]
 };

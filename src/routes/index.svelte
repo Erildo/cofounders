@@ -18,7 +18,7 @@
 	});
 </script>
 
-<div class="container h-screen">
+<div class="w-full h-screen">
 	{#if $user}
 		<Dashboard />
 	{:else}
