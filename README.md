@@ -1,4 +1,6 @@
-# Open-source platform for finding the best co-founders
+# Co-Founders
+![homepage](src/images/homepageImg.png)
+
 Match with co-founders based on your preferences. We are here to be the best platform out there.
 
 ## Features
@@ -23,3 +25,5 @@ Currently what I am trying to build:
 Finish the chat
 
 Finish the build team functionality
+
+General improvements in UI
