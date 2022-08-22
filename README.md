@@ -3,6 +3,10 @@
 
 Match with co-founders based on your preferences. We are here to be the best platform out there.
 
+Founder [@Erildo](https://www.linkedin.com/in/erildo-shuli/)
+
+I was inspired from YCombinator cofoudners platform and decided to build a better one.
+Open-source projects are the best therefore to create the best out there I need your help to collaborate and achieve goals faster.
 ## Features
 Build teams fast 
 

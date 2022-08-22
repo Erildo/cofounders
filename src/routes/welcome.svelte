@@ -78,7 +78,7 @@
 			</p>
 
 			<div class="w-full ml-36 mt-6 ">
-				<a href="https://www.producthunt.com/posts/artboard-studio-3?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-artboard&#0045;studio&#0045;3" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=356315&theme=light" alt="Artboard&#0032;Studio - Design&#0032;and&#0032;animate&#0032;like&#0032;never&#0032;before | Product Hunt" style="width: 250px; height: 54px;" width="350" height="54" /></a>
+				<!-- <a href="https://www.producthunt.com/posts/artboard-studio-3?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-artboard&#0045;studio&#0045;3" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=356315&theme=light" alt="Artboard&#0032;Studio - Design&#0032;and&#0032;animate&#0032;like&#0032;never&#0032;before | Product Hunt" style="width: 250px; height: 54px;" width="350" height="54" /></a> -->
 			</div>
 		</div>
 	</div>
