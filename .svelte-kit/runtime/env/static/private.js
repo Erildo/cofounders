@@ -62,6 +62,9 @@ export const LOGONSERVER = "\\\\DESKTOP-P64NQ2A";
 /** @type {import('$env/static/private').NODE} */
 export const NODE = "C:\\Program Files\\nodejs\\node.exe";
 
+/** @type {import('$env/static/private').NODE_ENV} */
+export const NODE_ENV = "development";
+
 /** @type {import('$env/static/private').NODE_EXE} */
 export const NODE_EXE = "C:\\Program Files\\nodejs\\\\node.exe";
 

@@ -1,20 +1,14 @@
-# create-svelte
+# Open-source platform for finding the best co-founders</br>
+# Match with co-founders based on your preferences. We are here to be the best platform out there.
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-## Creating a project
+## Build teams fast.
+### We use a flat hierarchy organizational structure with few or no levels of middle management.
 
-If you're seeing this, you've probably already done this step. Congrats!
+### You can vote! Just like on a board where you approve decisions, here you too can vote! Everything transparent!
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
+## Build using Svelte
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
