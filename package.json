@@ -1,11 +1,12 @@
 {
 	"name": "co",
 	"version": "0.0.1",
-	"engines": {    
-        "node": "16.17",
-        "npm": "8.15"
-    },
+	"engines": {
+		"node": "16.13.0",
+		"npm": "8.1.0"
+	},
 	"scripts": {
+		"start": "node build",
 		"dev": "vite dev",
 		"build": "vite build",
 		"package": "svelte-kit package",
@@ -18,6 +19,7 @@
 	"devDependencies": {
 		"@rollup/plugin-replace": "^4.0.0",
 		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-node": "^1.0.0-next.86",
 		"@sveltejs/kit": "next",
 		"autoprefixer": "^10.4.8",
 		"dotenv": "^16.0.1",
