@@ -12,7 +12,8 @@
 		dataArr = [''],
 		full_name,
 		loading,
-		fid = 0 ,
+		fid = 0,
+		friends_name = '',
 		avatar;
 
 	async function getFriends() {
@@ -21,19 +22,19 @@
 	async function getRequests() {
 		await getFriendship('Request');
 	}
-	async function openMessages(id) {
+	async function openMessages(id,name) {
 		fid = id;
-		
+		friends_name = name;
 	}
-	let promise = openMessages(fid)
+	let promise = openMessages(fid);
 
 	async function getFriendship(frienship_status) {
 		try {
 			let { data, error, status } = await supabase
 				.from('friendshipview')
 				.select('*')
-				.eq('status', frienship_status);
-			// .eq('AddresseeId', user.id);
+				.eq('status', frienship_status)
+				.eq('AddresseeId', user.id);
 			if (error) throw error;
 
 			if (data) {
@@ -100,6 +101,7 @@
 					>
 				</div>
 				<div class="contacts p-2 flex-1 overflow-y-scroll " use:getFriends>
+					
 					{#each dataArr as dt}
 						<div
 							class="flex justify-between items-center p-3 hover:bg-gray-200 rounded-lg relative"
@@ -113,10 +115,15 @@
 							</div>
 							<div class="flex-auto min-w-0 ml-4 mr-6 hidden md:block group-hover:block text-black">
 								<p>
-									<a href="./" on:click={promise =openMessages(dt.fid)}>{dt.full_name}</a>
-									<a href={dt.url}  target="_blank">
+									<a href="./" on:click={(promise = openMessages(dt.fid,dt.full_name))} >{dt.full_name}</a>
+									{#if dt.full_name == "Bot"}
+									<p>anything interesting today?</p>
+									{:else}
+									<a href={dt.url} target="_blank">
 										<ion-icon name="logo-linkedin" class="w-5 h-5" /></a
 									>
+									{/if}
+									
 									{#if dt.status == 'Request'}
 										<button
 											on:click={updateStatus(dt.AddresseeId, dt.RequesterId)}
@@ -136,9 +143,8 @@
 					{/each}
 				</div>
 			</section>
-				
-				<Messages bind:fid />
-			
+
+			<Messages bind:fid bind:friends_name />
 		</main>
 	</div>
 </div>

@@ -2,6 +2,7 @@
 	// @ts-nocheck
 	import { goto } from '$app/navigation';
 	import { session } from '$app/stores';
+import { PUBLIC_BOTID } from '$env/static/public';
 
 	import { supabase } from '$lib/supabaseClient';
 	import { onMount } from 'svelte';
@@ -32,7 +33,8 @@
 			let { data, error, status } = await supabase
 				.from('profiles')
 				.select('*')
-				.not('uid', 'eq', user.id);
+				.not('uid', 'eq', user.id)
+				.not('uid', 'eq', PUBLIC_BOTID);
 			if (error) throw error;
 			if (data) {
 				AddresseeId = data.at(i).uid;

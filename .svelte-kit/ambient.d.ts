@@ -5,6 +5,7 @@ declare module '$env/static/public' {
 	export const PUBLIC_NAME: string;
 	export const PUBLIC_GITHUB_URL: string;
 	export const PUBLIC_DISCORD_URL: string;
+	export const PUBLIC_BOTID: string;
 }
 
 declare module '$env/static/private' {

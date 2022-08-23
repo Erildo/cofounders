@@ -21,6 +21,12 @@ Everything transparent!
 npm i cofounders
 ```
 
+## Made with Svelte Supabsae amd Tailwind :heart:	
+
+## Supabase Schema
+![supabase](src/images/Supbase%20Schema.png)
+
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

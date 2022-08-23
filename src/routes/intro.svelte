@@ -1,5 +1,6 @@
 <script>
 import { goto } from '$app/navigation';
+import { PUBLIC_BOTID } from '$env/static/public';
 
 	// @ts-nocheck
 	import { supabase } from '$lib/supabaseClient';
@@ -17,10 +18,26 @@ import { goto } from '$app/navigation';
 		message,full_name,avatar,grad_year,
 		loading;
 
+		const user = supabase.auth.user();
+
+
+		async function friendsWithBot() {
+		try {
+			const { data, error } = await supabase.from('friendship').insert([
+				{
+					RequesterId: PUBLIC_BOTID,
+					AddresseeId: user.id,
+					status: 'friends'
+				}
+			]);
+			if (error) throw error;
+		} catch {
+			// error to display
+		}
+	}
 	 async function letsgo() {
 		try {
 			loading = true;
-			const user = supabase.auth.user();
 			const session = supabase.auth.session()
 			if(idea == "Yes,I do"){
 				nextPage = "./addCompany";
@@ -55,6 +72,7 @@ import { goto } from '$app/navigation';
 		} finally {
 			loading = false;
 		}
+		await friendsWithBot()
 	}
 	const categories = [
 		'Agriculture Agtech',
