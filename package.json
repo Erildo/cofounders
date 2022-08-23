@@ -2,8 +2,8 @@
 	"name": "co",
 	"version": "0.0.1",
 	"engines": {    
-        "node": "16.x",
-        "npm": "8.x"
+        "node": "16.17",
+        "npm": "8.15"
     },
 	"scripts": {
 		"dev": "vite dev",
