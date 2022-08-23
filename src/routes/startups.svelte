@@ -157,7 +157,7 @@
 	</nav>
 </div>
 
-<div class="mt-10" use:getAll>
+<div class="mt-4" use:getAll>
 	{#if coArr.length > 0}
 		{#each coArr as dt}
 			<div class="max-w-2xl px-8 py-4 mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 mt-2">
@@ -169,7 +169,7 @@
 							class="col-span-5 text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 "
 							>{dt.name}</span
 						>
-						<span class="text-sm font-semibold px-4 py-1 text-gray-800 rounded-full bg-green-300 ml-20"
+						<span class="text-sm font-semibold px-4 py-1 text-gray-800 rounded-full bg-green-300 ml-[350px]"
 						>{dt.stage}</span>
 						<span
 						class="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500"

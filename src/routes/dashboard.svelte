@@ -145,6 +145,7 @@
 		{/if}
 	</div>
 	<div name="left" class=" bg-gray-100">
-		<!-- <LeftSide /> -->
+		<LeftSide/>
+		
 	</div>
 </div>

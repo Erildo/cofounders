@@ -1,4 +1,4 @@
-# Co-Founders
+# Cogit
 ![homepage](src/images/homepageImg.png)
 
 Match with co-founders based on your preferences. We are here to be the best platform out there.
@@ -25,8 +25,6 @@ npm i cofounders
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Currently what I am trying to build:
-
-Finish the chat
 
 Finish the build team functionality
 

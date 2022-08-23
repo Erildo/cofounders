@@ -6,7 +6,7 @@ export const ALLUSERSPROFILE = "C:\\ProgramData";
 export const APPDATA = "C:\\Users\\PC\\AppData\\Roaming";
 
 /** @type {import('$env/static/private').CHROME_CRASHPAD_PIPE_NAME} */
-export const CHROME_CRASHPAD_PIPE_NAME = "\\\\.\\pipe\\crashpad_7524_UIIYUHXTRVGGADLR";
+export const CHROME_CRASHPAD_PIPE_NAME = "\\\\.\\pipe\\crashpad_5992_PEZRCFGWLYMYZPTP";
 
 /** @type {import('$env/static/private').COLOR} */
 export const COLOR = "1";
@@ -37,6 +37,9 @@ export const FPS_BROWSER_APP_PROFILE_STRING = "Internet Explorer";
 
 /** @type {import('$env/static/private').FPS_BROWSER_USER_PROFILE_STRING} */
 export const FPS_BROWSER_USER_PROFILE_STRING = "Default";
+
+/** @type {import('$env/static/private').GIT_ASKPASS} */
+export const GIT_ASKPASS = "c:\\Users\\PC\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh";
 
 /** @type {import('$env/static/private').HOME} */
 export const HOME = "C:\\Users\\PC";
@@ -147,7 +150,7 @@ export const ORIGINAL_XDG_CURRENT_DESKTOP = "undefined";
 export const OS = "Windows_NT";
 
 /** @type {import('$env/static/private').Path} */
-export const Path = "C:\\Users\\PC\\Desktop\\cogit\\cofounders\\node_modules\\.bin;C:\\Users\\PC\\Desktop\\cogit\\node_modules\\.bin;C:\\Users\\PC\\Desktop\\node_modules\\.bin;C:\\Users\\PC\\node_modules\\.bin;C:\\Users\\node_modules\\.bin;C:\\node_modules\\.bin;C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\@npmcli\\run-script\\lib\\node-gyp-bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\nodejs\\;C:\\Users\\PC\\anaconda3;C:\\Users\\PC\\anaconda3\\Library\\mingw-w64\\bin;C:\\Users\\PC\\anaconda3\\Library\\usr\\bin;C:\\Users\\PC\\anaconda3\\Library\\bin;C:\\Users\\PC\\anaconda3\\Scripts;C:\\Users\\PC\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\PC\\AppData\\Roaming\\npm;C:\\Users\\PC\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\PC\\AppData\\Local\\GitHubDesktop\\bin";
+export const Path = "C:\\Users\\PC\\Desktop\\cogit\\cofounders\\node_modules\\.bin;C:\\Users\\PC\\Desktop\\cogit\\node_modules\\.bin;C:\\Users\\PC\\Desktop\\node_modules\\.bin;C:\\Users\\PC\\node_modules\\.bin;C:\\Users\\node_modules\\.bin;C:\\node_modules\\.bin;C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\@npmcli\\run-script\\lib\\node-gyp-bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\nodejs\\;C:\\Program Files\\Git\\cmd;C:\\Users\\PC\\anaconda3;C:\\Users\\PC\\anaconda3\\Library\\mingw-w64\\bin;C:\\Users\\PC\\anaconda3\\Library\\usr\\bin;C:\\Users\\PC\\anaconda3\\Library\\bin;C:\\Users\\PC\\anaconda3\\Scripts;C:\\Users\\PC\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\PC\\AppData\\Roaming\\npm;C:\\Users\\PC\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\PC\\AppData\\Local\\GitHubDesktop\\bin;C:\\Program Files\\heroku\\bin";
 
 /** @type {import('$env/static/private').PATHEXT} */
 export const PATHEXT = ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL";
@@ -214,6 +217,18 @@ export const USERNAME = "PC";
 
 /** @type {import('$env/static/private').USERPROFILE} */
 export const USERPROFILE = "C:\\Users\\PC";
+
+/** @type {import('$env/static/private').VSCODE_GIT_ASKPASS_EXTRA_ARGS} */
+export const VSCODE_GIT_ASKPASS_EXTRA_ARGS = "--ms-enable-electron-run-as-node";
+
+/** @type {import('$env/static/private').VSCODE_GIT_ASKPASS_MAIN} */
+export const VSCODE_GIT_ASKPASS_MAIN = "c:\\Users\\PC\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js";
+
+/** @type {import('$env/static/private').VSCODE_GIT_ASKPASS_NODE} */
+export const VSCODE_GIT_ASKPASS_NODE = "C:\\Users\\PC\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe";
+
+/** @type {import('$env/static/private').VSCODE_GIT_IPC_HANDLE} */
+export const VSCODE_GIT_IPC_HANDLE = "\\\\.\\pipe\\vscode-git-53d2694886-sock";
 
 /** @type {import('$env/static/private').windir} */
 export const windir = "C:\\WINDOWS";
