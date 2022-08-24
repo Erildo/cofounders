@@ -9,7 +9,7 @@
 
 	let error,
 		message,
-		url,
+		url,co_roles,
 		my_role = '',
 		co_location = '',
 		co_continent = [''],
@@ -40,7 +40,6 @@
 			if (error && status !== 406) throw error;
 
 			if (data) {
-				console.log(data);
 				my_role = data.my_role;
 
 				message = data.message;

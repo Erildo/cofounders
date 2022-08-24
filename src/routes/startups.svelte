@@ -31,7 +31,6 @@
 			if (data) {
 				// getData(data)
 				coArr = data;
-				console.log(data);
 			}
 		} catch (error) {
 			console.log(error);

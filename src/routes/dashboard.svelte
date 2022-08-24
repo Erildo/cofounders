@@ -6,7 +6,6 @@
 	import { supabase } from '$lib/supabaseClient';
 	import { PUBLIC_NAME,PUBLIC_DISCORD_URL,PUBLIC_GITHUB_URL } from '$env/static/public';
 
-	import Index from './index.svelte';
 	import Profile from './profile.svelte';
 	import LeftSide from './leftSide.svelte';
 	import Settings from './settings.svelte';
@@ -115,7 +114,7 @@
 					there.<br>Its open-source.<br>
 					Smth missing? Create it
 				</p>
-				<a
+				<a target="_blank"
 					class="text-sm text-blue-900 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
 					href={PUBLIC_GITHUB_URL}>Github</a
 				>

@@ -1,27 +1,40 @@
 <script>
-import { goto } from '$app/navigation';
-import { PUBLIC_BOTID } from '$env/static/public';
-
 	// @ts-nocheck
+
+	import { goto } from '$app/navigation';
+	import { PUBLIC_BOTID } from '$env/static/public';
+
 	import { supabase } from '$lib/supabaseClient';
 	let roles = ['Operations', 'Sales and marketing', 'Engineering', 'All'];
 	let co_roles = [''];
 	let my_interest = [''];
 	let interests = ['Networking', 'Find work', 'Find a cofounder', 'Join Teams(soon)'];
-	let idea = "";
-	let errors,nextPage = '',
+	let idea = '';
+	let error,
+		nextPage = '',
 		url,
 		location,
 		my_role,
-		co_location = "",
-		co_continent = [''],category,
-		message,full_name,avatar,grad_year,
+		co_location = '',
+		co_continent = [''],
+		category,
+		message,
+		full_name,
+		avatar,
+		grad_year,
 		loading;
 
-		const user = supabase.auth.user();
+	const user = supabase.auth.user();
 
 
-		async function friendsWithBot() {
+	function showToast(msg) {
+		error = msg.message;
+            document.getElementById("myToast").classList.remove("hidden");
+            setTimeout(function () {
+                document.getElementById("myToast").classList.add("hidden");
+            }, 5000);
+        }
+	async function friendsWithBot() {
 		try {
 			const { data, error } = await supabase.from('friendship').insert([
 				{
@@ -35,44 +48,45 @@ import { PUBLIC_BOTID } from '$env/static/public';
 			// error to display
 		}
 	}
-	 async function letsgo() {
+	async function letsgo() {
 		try {
 			loading = true;
-			const session = supabase.auth.session()
-			if(idea == "Yes,I do"){
-				nextPage = "./addCompany";
-			}else{
-				nextPage = "./dashboard";
+			const session = supabase.auth.session();
+			if (idea == 'Yes,I do') {
+				nextPage = './addCompany';
+			} else {
+				nextPage = './dashboard';
 			}
 			full_name = session.user.user_metadata.full_name;
 			avatar = session.user.user_metadata.avatar_url;
 			const { data, error } = await supabase.from('profiles').insert([
 				{
-					uid:user.id,
-					url:url,
-					location:location,
-					my_role:my_role,
-					my_interest:my_interest,
-					co_location:co_location,
-					co_continent:co_continent,
-					co_roles:co_roles,
-					message:message,
-					idea:idea,
-					full_name:full_name,
-					avatar:avatar,
-					grad_year:grad_year,
-					category:category
+					uid: user.id,
+					url: url,
+					location: location,
+					my_role: my_role,
+					my_interest: my_interest,
+					co_location: co_location,
+					co_continent: co_continent,
+					co_roles: co_roles,
+					message: message,
+					idea: idea,
+					full_name: full_name,
+					avatar: avatar,
+					grad_year: grad_year,
+					category: category
 				}
 			]);
 			if (error) throw error;
-			goto(nextPage)
+			if (data) {
+				await friendsWithBot();
+				goto(nextPage);
+			}
 		} catch (error) {
-			errors = error;
-			console.log(error)
+			showToast(error)
 		} finally {
 			loading = false;
 		}
-		await friendsWithBot()
 	}
 	const categories = [
 		'Agriculture Agtech',
@@ -384,9 +398,12 @@ import { PUBLIC_BOTID } from '$env/static/public';
 					placeholder="https://www.linkedin.com/in/erildo-shuli/"
 					required
 				/>
+				<label for="url" class="block mt-1 italic text-xs text-gray-900 dark:text-gray-300"
+					>We need it to grab your experience</label
+				>
 			</div>
 			<div>
-				<label for="url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+				<label for="number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
 					>Your graduation year</label
 				>
 				<input
@@ -401,28 +418,30 @@ import { PUBLIC_BOTID } from '$env/static/public';
 			</div>
 
 			<div>
-				<label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+				<label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
 					>Location</label
 				>
-				<select required
+				<select
+					required
 					bind:value={location}
 					class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 				>
-					<option selected value="" >Choose Country</option>
+					<option selected value="">Choose Country</option>
 					{#each countryList as country}
 						<option value={country}>{country}</option>
 					{/each}
 				</select>
 			</div>
 			<div>
-				<label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+				<label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
 					>Category</label
 				>
 				<select
+					required
 					bind:value={category}
 					class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 				>
-				<option selected value="">Choose category</option>
+					<option selected value="">Choose category</option>
 
 					{#each categories as ct}
 						<option value={ct}>{ct}</option>
@@ -430,10 +449,11 @@ import { PUBLIC_BOTID } from '$env/static/public';
 				</select>
 			</div>
 			<div>
-				<label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+				<label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
 					>Which areas of a startup are you willing to take responsibility for?</label
 				>
-				<select required
+				<select
+					required
 					bind:value={my_role}
 					class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 				>
@@ -448,10 +468,10 @@ import { PUBLIC_BOTID } from '$env/static/public';
 				<label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
 					>I am here for...</label
 				>
-				<div class="grid grid-cols-4">
+				<div class="grid grid-cols-4" required>
 					{#each interests as interest}
 						<div class="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
-							<input 
+							<input
 								type="checkbox"
 								bind:group={my_interest}
 								value={interest}
@@ -468,7 +488,7 @@ import { PUBLIC_BOTID } from '$env/static/public';
 			</div>
 			<div>
 				<label
-					for="subject"
+					for="location"
 					class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
 				>
 					Do you have a location preference for your co-founder?
@@ -476,7 +496,7 @@ import { PUBLIC_BOTID } from '$env/static/public';
 
 				<div class="flex">
 					<div class="flex items-center mr-4">
-						<input 
+						<input
 							type="radio"
 							bind:group={co_location}
 							value="No Preference"
@@ -489,7 +509,7 @@ import { PUBLIC_BOTID } from '$env/static/public';
 						>
 					</div>
 					<div class="flex items-center mr-4">
-						<input 
+						<input
 							type="radio"
 							bind:group={co_location}
 							value="In my country"
@@ -503,7 +523,8 @@ import { PUBLIC_BOTID } from '$env/static/public';
 					</div>
 
 					<div class="flex items-center mr-4">
-						<select required
+						<select
+							required
 							multiple
 							bind:value={co_continent}
 							id="countries_multiple"
@@ -557,7 +578,8 @@ import { PUBLIC_BOTID } from '$env/static/public';
 				<label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
 					>Your message to your cofounder</label
 				>
-				<textarea required
+				<textarea
+					required
 					maxlength="200"
 					id="message"
 					rows="6"
@@ -651,3 +673,10 @@ import { PUBLIC_BOTID } from '$env/static/public';
 		</form>
 	</div>
 </section>
+<div id="myToast" class="flex p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800 hidden fixed right-10 bottom-10" role="alert">
+	<svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+	<span class="sr-only">Info</span>
+	<div>
+	  <span class="font-medium">!</span> {error}
+	</div>
+  </div>

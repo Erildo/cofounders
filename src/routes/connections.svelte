@@ -38,7 +38,6 @@
 			if (error) throw error;
 
 			if (data) {
-				console.log(data);
 				dataArr = data;
 			}
 		} catch (error) {

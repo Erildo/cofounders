@@ -39,8 +39,8 @@ import { PUBLIC_BOTID } from '$env/static/public';
 			if (data) {
 				AddresseeId = data.at(i).uid;
 
-				// await filter(user.id, AddresseeId, data);
-				// await filter(AddresseeId, user.id, data);
+				await filter(user.id, AddresseeId, data);
+				await filter(AddresseeId, user.id, data);
 				await getData(data);
 			}
 		} catch (error) {

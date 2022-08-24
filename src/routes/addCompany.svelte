@@ -1,13 +1,13 @@
 <script>
-import { goto } from '$app/navigation';
-
 	// @ts-nocheck
-	import { supabase } from '$lib/supabaseClient';
-import Dashboard from './dashboard.svelte';
+	import { goto } from '$app/navigation';
 
-	let offers = ['Salary', 'Shares','Options', 'All'];
+	import { supabase } from '$lib/supabaseClient';
+	import Dashboard from './dashboard.svelte';
+
+	let offers = ['Salary', 'Shares', 'Options', 'All'];
 	let compesation = [''];
-	let errors,
+	let error,
 		url,
 		category,
 		stage = '',
@@ -18,29 +18,35 @@ import Dashboard from './dashboard.svelte';
 		loading,
 		pitchUrl;
 
-		async function addCompany() {
+	function showToast(msg) {
+		error = msg.message;
+		document.getElementById('myToast').classList.remove('hidden');
+		setTimeout(function () {
+			document.getElementById('myToast').classList.add('hidden');
+		}, 5000);
+	}
+	async function addCompany() {
 		try {
 			loading = true;
 			const user = supabase.auth.user();
 			const { data, error } = await supabase.from('company').insert([
 				{
-					uid:user.id,
-					url:url,
-					name:name,
-					category:category,
-					problem:problem,
-					solution:solution,
-					compesation:compesation,
-					teams:teams,
-					stage:stage,
-					pitchUrl:pitchUrl,
+					uid: user.id,
+					url: url,
+					name: name,
+					category: category,
+					problem: problem,
+					solution: solution,
+					compesation: compesation,
+					teams: teams,
+					stage: stage,
+					pitchUrl: pitchUrl
 				}
 			]);
 			if (error) throw error;
-			goto("./dashboard")
-
+			goto('./dashboard');
 		} catch (error) {
-			errors = error;
+			showToast(error);
 		} finally {
 			loading = false;
 		}
@@ -174,32 +180,33 @@ import Dashboard from './dashboard.svelte';
 					bind:value={url}
 					class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
 					placeholder="https://..."
-					
 				/>
 			</div>
 			<div>
 				<label for="url" class="block  text-sm font-medium text-gray-900 dark:text-gray-300">
-					Pitch Deck Url</label>
-					<p class="font-sm mb-2 text-gray-500">You can create a super pitch deck within 1 min here: https://www.deck.rocks/ &#129304;</p>
+					Pitch Deck Url</label
+				>
+				<p class="font-sm mb-2 text-gray-400">
+					You can create a super pitch deck within 1 min here: https://www.deck.rocks/ &#129304;
+				</p>
 
 				<input
 					type="url"
 					bind:value={pitchUrl}
 					class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
 					placeholder="https://..."
-					
 				/>
 			</div>
 			<div>
 				<label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
 					>Category</label
 				>
-				<select required
+				<select
+					required
 					bind:value={category}
 					class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-				><option selected value="">Choose category</option>
+					><option selected value="">Choose category</option>
 					{#each categories as ct}
-						
 						<option value={ct}>{ct}</option>
 					{/each}
 				</select>
@@ -277,7 +284,7 @@ import Dashboard from './dashboard.svelte';
 						/>
 					</div>
 					<div class="ml-2 text-sm">
-						<label for="helper-checkbox"  class="font-medium text-gray-900 dark:text-gray-300"
+						<label for="helper-checkbox" class="font-medium text-gray-900 dark:text-gray-300"
 							>Allow us to build you the team(coming soon)</label
 						>
 						<p
@@ -301,3 +308,10 @@ import Dashboard from './dashboard.svelte';
 		</form>
 	</div>
 </section>
+<div id="myToast" class="flex p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800 hidden fixed right-10 bottom-10" role="alert">
+	<svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+	<span class="sr-only">Info</span>
+	<div>
+	  <span class="font-medium">!</span> {error}
+	</div>
+  </div>

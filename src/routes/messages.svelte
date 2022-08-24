@@ -26,11 +26,10 @@
 			if (error) throw error;
 
 			if (data) {
-				console.log(data);
 				msgArr = data;
 			}
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		}
 	}
 
@@ -71,7 +70,7 @@
 	<div class="chat-header px-6 py-4 flex flex-row flex-none justify-between items-center shadow">
 		<div class="flex">
 			<div class="text-sm">
-				<p class="font-bold text-black">Chatting with {friends_name}</p>
+				<p class="font-bold text-black">{ friends_name == '' ? 'Chats' : 'Chating with'}  {friends_name}</p>
 			</div>
 		</div>
 
@@ -98,20 +97,6 @@
 			<span use:getMessage />
 			{#each msgArr as arr}
 				{#if arr.suid == user.id}
-					<!-- first msg -->
-					<div class="flex flex-row justify-start">
-						<div class="messages text-sm text-gray-800 grid grid-flow-row gap-2">
-							<div class="flex items-center group">
-								<p
-									class="px-6 py-3 rounded-t-full rounded-r-full bg-gray-500 max-w-xs lg:max-w-md text-gray-200"
-								>
-									{arr.reply}
-								</p>
-							</div>
-						</div>
-						<p class="p-4 text-center text-sm text-gray-400">{arr.sent_at}</p>
-					</div>
-				{:else}
 					<!-- second msg -->
 					<div class="flex flex-row justify-end">
 						<div class="messages text-sm text-white grid grid-flow-row gap-2">
@@ -122,7 +107,22 @@
 							</div>
 						</div>
 						<p class="p-4 text-center text-sm text-gray-400">{arr.sent_at}</p>
+					</div>	
+				
+				{:else}
+				<!-- first msg -->
+				<div class="flex flex-row justify-start">
+					<div class="messages text-sm text-gray-800 grid grid-flow-row gap-2">
+						<div class="flex items-center group">
+							<p
+								class="px-6 py-3 rounded-t-full rounded-r-full bg-gray-500 max-w-xs lg:max-w-md text-gray-200"
+							>
+								{arr.reply}
+							</p>
+						</div>
 					</div>
+					<p class="p-4 text-center text-sm text-gray-400">{arr.sent_at}</p>
+				</div>
 				{/if}
 			{/each}
 		{:else}
@@ -169,6 +169,8 @@
 						type="text"
 						bind:value={text}
 						placeholder="Aa"
+						maxlength="50"
+
 					/>
 				</label>
 			</div>
@@ -190,12 +192,12 @@
 <!-- component -->
 <style>
 	/* can be configured in tailwind.config.js */
-	.group:hover .group-hover\:block {
+	/* .group:hover .group-hover\:block {
 		display: block;
 	}
 	.hover\:w-64:hover {
 		width: 45%;
-	}
+	} */
 
 	/* NO NEED THIS CSS - just for custom scrollbar which can also be configured in tailwind.config.js*/
 	::-webkit-scrollbar {
