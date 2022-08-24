@@ -3,7 +3,7 @@
 
 Match with co-founders based on your preferences. We are here to be the best platform out there.
 
-We are live at <a href="https://cogit-founders.herokuapp.com/" target="_blank">Heroku</a>
+We are live at <a href="cogit-cofounders.vercel.app" target="_blank">Vercel</a>
 
 
 

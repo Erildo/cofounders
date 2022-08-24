@@ -167,7 +167,7 @@
 		>
 			<div>
 				<!-- svelte-ignore a11y-img-redundant-alt -->
-				<img class="w-full hidden dark:block" src="src/images/t.jpg" alt="dashboard image" />
+				<img class="w-full hidden dark:block" src="https://github.com/Erildo/cofounders/blob/main/src/images/t.jpg?raw=true" alt="dashboard image" />
 				<div class="caption text-gray-400">
 					Photo by <a
 						href="https://unsplash.com/@jannerboy62?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
