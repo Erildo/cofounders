@@ -18,7 +18,7 @@
 	});
 </script>
 
-<div class="w-full h-screen">
+<div class="md:w-full md:h-screen absolute inset-0">
 	{#if $user}
 		<Dashboard />
 	{:else}

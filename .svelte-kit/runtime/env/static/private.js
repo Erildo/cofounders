@@ -6,7 +6,7 @@ export const ALLUSERSPROFILE = "C:\\ProgramData";
 export const APPDATA = "C:\\Users\\PC\\AppData\\Roaming";
 
 /** @type {import('$env/static/private').CHROME_CRASHPAD_PIPE_NAME} */
-export const CHROME_CRASHPAD_PIPE_NAME = "\\\\.\\pipe\\crashpad_424_IPWSVCEYWLGIVPFB";
+export const CHROME_CRASHPAD_PIPE_NAME = "\\\\.\\pipe\\crashpad_12820_TANMFXTZQNEXGJYH";
 
 /** @type {import('$env/static/private').COLOR} */
 export const COLOR = "1";
@@ -123,10 +123,10 @@ export const npm_lifecycle_script = "vite dev";
 export const npm_node_execpath = "C:\\Program Files\\nodejs\\node.exe";
 
 /** @type {import('$env/static/private').npm_package_engines_node} */
-export const npm_package_engines_node = "16.13.0";
+export const npm_package_engines_node = "16.15.0";
 
 /** @type {import('$env/static/private').npm_package_engines_npm} */
-export const npm_package_engines_npm = "8.1.0";
+export const npm_package_engines_npm = "8.5.5";
 
 /** @type {import('$env/static/private').npm_package_json} */
 export const npm_package_json = "C:\\Users\\PC\\Desktop\\cogit\\cofounders\\package.json";

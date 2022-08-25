@@ -20,6 +20,11 @@
 			loading = false;
 		}
 	}
+
+	let showMenu = false;
+	function toggle() {
+		showMenu = !showMenu;
+	}
 </script>
 
 <head>
@@ -43,7 +48,9 @@
 				<div class="flex lg:hidden">
 					<button
 						type="button"
-						class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
+						on:click={toggle}
+
+						class="text-gray-500 hover:text-gray-300 focus:outline-none focus:text-gray-300"
 						aria-label="toggle menu"
 					>
 						<svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
@@ -55,6 +62,7 @@
 					</button>
 				</div>
 			</div>
+			{#if showMenu == true}
 
 			<div class="flex flex-col mt-4  space-y-2 lg:mt-0 lg:flex-row lg:-mx- lg:space-y-0">
 				<a
@@ -74,7 +82,7 @@
 					href="#footer">About Us</a
 				>
 			</div>
-
+			
 			<form on:submit|preventDefault={signInWithLinkedIn}>
 				<button
 					value={loading ? 'Loading' : 'Sign in with LinkedIn'}
@@ -85,6 +93,7 @@
 					<ion-icon class="mr-3" name="logo-linkedin" /> Get in with LinkedIn
 				</button>
 			</form>
+			{/if}
 		</nav>
 
 		<div class="container px-6 py-16 mx-auto text-center" id="home">

@@ -63,8 +63,8 @@
 	}
 </script>
 
-<div class="w-[150px] mt-10 ">
-	<div class="hidden md:block">
+<div class="mt-10 ">
+	<div class=" md:block">
 		<p class="text-base font-semibold text-black">
 			<ion-icon class="h-7 w-7" name="dice-outline" />
 		</p>
