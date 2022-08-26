@@ -25,7 +25,10 @@
 	function toggle() {
 		showMenu = !showMenu;
 	}
+	let screenWidth;
+
 </script>
+<svelte:window bind:innerWidth={screenWidth}/>
 
 <head>
 	<!-- Place this tag in your head or just before your close body tag. -->
@@ -62,7 +65,7 @@
 					</button>
 				</div>
 			</div>
-			{#if showMenu == true}
+			{#if showMenu == true || screenWidth > 1002}
 
 			<div class="flex flex-col mt-4  space-y-2 lg:mt-0 lg:flex-row lg:-mx- lg:space-y-0">
 				<a

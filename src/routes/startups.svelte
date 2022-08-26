@@ -4,7 +4,7 @@
 	import { session } from '$app/stores';
 
 	import { supabase } from '$lib/supabaseClient';
-	import { onMount } from 'svelte';
+
 	import Skeleton from './skeleton.svelte';
 	let url,
 		category = '',
@@ -21,15 +21,14 @@
 	let coArr = [''];
 	let i = 0;
 	const user = supabase.auth.user();
-	const getAllQ = supabase.from('companyview').select('*');
 	const mineQ = supabase.from('companyview').select('*').filter('uid', 'eq', user.id);
+	const getAllQ = supabase.from('companyview').select('*');
 
 	async function getCompanies(query) {
 		try {
 			let { data, error, status } = await query;
 			if (error) throw error;
 			if (data) {
-				// getData(data)
 				coArr = data;
 			}
 		} catch (error) {
@@ -41,24 +40,27 @@
 		await getCompanies(this['query' + i]);
 		i = i + 1;
 	}
-	// async function getData(data) {
-	// 	uid = data.id;
-	// 	url = data.url;
-	// 	created_at = data.created_at;
-	// 	name = data.name;
-	// 	category = data.category;
-	// 	problem = data.problem;
-	// 	solution = data.solution;
-	// 	compesation = data.compesation;
-	// 	teams = data.teams;
-	// 	stage = data.stage;
-	// 	pitchUrl = data.pitchUrl;
-	// }
+	async function askToJoin(coid) {
+		try {
+			const { data, error } = await supabase.from('coRequests').insert([
+				{
+					cor_uid: user.id,
+					co_id:coid
+				}
+			]);
+			if (error) throw error;
+			console.log('success');
+		} catch (error) {
+			console.log(error);
+		}
+	}
 	async function getAll() {
 		await getCompanies(getAllQ);
+		category = "";
 	}
 	async function mine() {
 		await getCompanies(mineQ);
+		category = "";
 	}
 	const categories = [
 		'Agriculture Agtech',
@@ -159,74 +161,93 @@
 <div class="mt-4" use:getAll>
 	{#if coArr.length > 0}
 		{#each coArr as dt}
-			<div class="max-w-2xl px-8 py-4 mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 mt-2">
-				
+			<!-- component -->
 
-				<div >
-					<div class="flex flex-rows ">
-						<span
-							class="col-span-5 text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 "
-							>{dt.name}</span
-						>
-						<span class="text-sm font-semibold px-4 py-1 text-gray-800 rounded-full bg-green-300 ml-[350px]"
-						>{dt.stage}</span>
-						<span
-						class="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500"
-						>{dt.category}</span
-					>
-					</div>
-
-				<div class="flex flex-row">
-					{#if dt.url}
-						<a
-							href={dt.url}
-							class="inline-flex justify-center items-center p-2 text-base font-medium text-gray-500 bg-gray-50 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white"
-						>
-							<ion-icon class="h-7 w-7" name="link-outline" /><span class="ml-2 w-full"> Url</span>
-						</a>
-					{/if}
-					<span class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300">
-						<a href={dt.pitchUrl}>Pitch Deck</a></span>
-					<span class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300">
-					{dt.compesation}</span>
-				</div>
-					<textarea
-					class="mt-1 text-gray-600 dark:text-gray-300 bg-gray-800"
-					id="outputText"
-					rows="3"
-					style="resize:none"
-					cols="80"
-					wrap="on"
-					readonly
-					value={dt.solution}
+			<span
+				class="relative block p-6 overflow-hidden border bg-white border-slate-100 rounded-lg ml-6 mr-6 mt-2"
+				href="./"
+			>
+				<span
+					class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
 				/>
-					
-				</div>
 
-				<div class="flex items-center justify-between mt-1">
-					<button
-						class="px-2 py-1 bg-transparent outline-none border-2 
-			border-indigo-300 rounded text-indigo-300 font-medium 
-			active:scale-95 hover:bg-indigo-500 hover:text-white hover:border-transparent 
-			focus:bg-indigo-500 focus:text-white focus:border-transparent focus:ring-2 
-			focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-gray-400/80 
-			disabled:shadow-none disabled:cursor-not-allowed transition-colors duration-200"
-					>
-						Join this team</button
-					>
+				<div class="justify-between sm:flex">
+					<div>
+						<h5 class="text-xl font-bold text-slate-900">
+							{dt.name}
+							<span
+								class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300"
+							>
+								{dt.compesation}</span
+							>
+						</h5>
+						<p class="mt-1 text-xs font-medium text-slate-600">By {dt.full_name}</p>
+					</div>
 
-					<div class="flex items-center">
-						<img
-							class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
-							src={dt.avatar}
-							alt="avatar"
-						/>
-						<span class="font-bold text-gray-700 cursor-pointer dark:text-gray-200"
-							>{dt.full_name}</span
-						>
+					<div class="flex-shrink-0 hidden ml-3 sm:block">
+						<img class="object-cover w-16 h-16 rounded-lg shadow-sm" src={dt.avatar} alt="" />
 					</div>
 				</div>
-			</div>
+
+				<div class="mt-4 sm:pr-8 sm:flex">
+					<p class="text-sm text-slate-500">
+						{dt.solution}
+					</p>
+				</div>
+
+				<div class="md:flex flex-row sm:flex-col md:flex-row lg:flex-col xl:flex-row mt-4 ">
+					<div class="flex flex-col-reverse">
+						<button
+							id={dt.id}
+							on:click={askToJoin(dt.id)}
+							class="w-[150px] px-2 py-1 bg-transparent outline-none border-2 
+										border-indigo-300 rounded text-indigo-300 font-medium 
+										active:scale-95 hover:bg-indigo-500 hover:text-white hover:border-transparent 
+										focus:bg-indigo-500 focus:text-white focus:border-transparent focus:ring-2 
+										focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-gray-400/80 
+										disabled:shadow-none disabled:cursor-not-allowed transition-colors duration-200"
+						>
+							Join this team</button
+						>
+					</div>
+
+					<div class="flex flex-col-reverse ml-3 sm:ml-6">
+						<span
+							style="
+						display:inline-block;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						max-width: 11ch;"
+							class="text-xs font-medium text-slate-500">{dt.created_at}</span
+						>
+						<dt class="text-sm  text-slate-600">Created</dt>
+					</div>
+
+					<div class="flex flex-col-reverse ml-3 sm:ml-6">
+						<dd class="text-xs font-medium text-slate-500">{dt.stage}</dd>
+						<dt class="text-sm  text-slate-600">Stage</dt>
+					</div>
+					<div class="flex flex-col-reverse ml-3 sm:ml-6">
+						<dd class="text-xs font-medium text-slate-500">{dt.category}</dd>
+						<dt class="text-sm  text-slate-600">Category</dt>
+					</div>
+					{#if dt.url}
+						<div class="flex flex-col-reverse ml-3 sm:ml-6">
+							<dt class="text-xs font-medium text-slate-600">
+								<a href={dt.url} target="_black">Site</a>
+							</dt>
+						</div>
+					{/if}
+					{#if dt.pitchUrl}
+						<div class="flex flex-col-reverse ml-3 sm:ml-6">
+							<dt class="text-xs font-medium text-slate-600">
+								<a href={dt.pitchUrl} target="_black">Pitch Deck</a>
+							</dt>
+						</div>
+					{/if}
+				</div>
+			</span>
 		{/each}
 	{:else}
 		<Skeleton />
