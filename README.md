@@ -3,7 +3,7 @@
 
 Match with co-founders based on your preferences. We are here to be the best platform out there.
 
-We are live at <a href="cogit-cofounders.vercel.app" target="_blank">Vercel</a>
+We are live at <a href="https://cogit-cofounders.vercel.app/" target="_blank">Vercel</a>
 
 
 
@@ -37,6 +37,6 @@ Currently what I am trying to build:
 
 Finish the build team functionality
 
-General improvements in UI
+Build a bot similar to Discord
 
-Creator [@Erildo](https://www.linkedin.com/in/erildo-shuli/)
+General improvements in UI
