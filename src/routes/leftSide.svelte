@@ -71,7 +71,7 @@
 		<div class="pb-1 mt-4 border-b">
 			<div class="text-sm lg:text-base" contenteditable="true" bind:innerHTML={randomItem.reply} />
 
-			<span class="text-xs italic"> grab attention here </span>
+			<span class="text-xs italic"> send a message to Bot </span>
 			<div class="my-6 " use:getTopTags>
 				<a
 					class="flex items-center mb-2 text-base font-semibold text-blue-600 hover:underline"
