@@ -6,7 +6,7 @@ export const ALLUSERSPROFILE = "C:\\ProgramData";
 export const APPDATA = "C:\\Users\\PC\\AppData\\Roaming";
 
 /** @type {import('$env/static/private').CHROME_CRASHPAD_PIPE_NAME} */
-export const CHROME_CRASHPAD_PIPE_NAME = "\\\\.\\pipe\\crashpad_3764_YPLSEWFARDZXKTWS";
+export const CHROME_CRASHPAD_PIPE_NAME = "\\\\.\\pipe\\crashpad_9628_WCCGJZJKMEDPMWQL";
 
 /** @type {import('$env/static/private').COLOR} */
 export const COLOR = "1";
@@ -31,12 +31,6 @@ export const DriverData = "C:\\Windows\\System32\\Drivers\\DriverData";
 
 /** @type {import('$env/static/private').EDITOR} */
 export const EDITOR = "notepad.exe";
-
-/** @type {import('$env/static/private').FPS_BROWSER_APP_PROFILE_STRING} */
-export const FPS_BROWSER_APP_PROFILE_STRING = "Internet Explorer";
-
-/** @type {import('$env/static/private').FPS_BROWSER_USER_PROFILE_STRING} */
-export const FPS_BROWSER_USER_PROFILE_STRING = "Default";
 
 /** @type {import('$env/static/private').GIT_ASKPASS} */
 export const GIT_ASKPASS = "c:\\Users\\PC\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh";
@@ -69,7 +63,7 @@ export const NODE = "C:\\Program Files\\nodejs\\node.exe";
 export const NODE_EXE = "C:\\Program Files\\nodejs\\\\node.exe";
 
 /** @type {import('$env/static/private').NPM_CLI_JS} */
-export const NPM_CLI_JS = "C:\\Program Files\\nodejs\\\\node_modules\\npm\\bin\\npm-cli.js";
+export const NPM_CLI_JS = "C:\\Users\\PC\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js";
 
 /** @type {import('$env/static/private').npm_command} */
 export const npm_command = "run-script";
@@ -96,7 +90,7 @@ export const npm_config_local_prefix = "C:\\Users\\PC\\Desktop\\cogit\\cofounder
 export const npm_config_metrics_registry = "https://registry.npmjs.org/";
 
 /** @type {import('$env/static/private').npm_config_node_gyp} */
-export const npm_config_node_gyp = "C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js";
+export const npm_config_node_gyp = "C:\\Users\\PC\\AppData\\Roaming\\npm\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js";
 
 /** @type {import('$env/static/private').npm_config_noproxy} */
 export const npm_config_noproxy = "";
@@ -108,10 +102,10 @@ export const npm_config_prefix = "C:\\Users\\PC\\AppData\\Roaming\\npm";
 export const npm_config_userconfig = "C:\\Users\\PC\\.npmrc";
 
 /** @type {import('$env/static/private').npm_config_user_agent} */
-export const npm_config_user_agent = "npm/8.1.0 node/v16.13.0 win32 x64 workspaces/false";
+export const npm_config_user_agent = "npm/8.19.1 node/v18.8.0 win32 x64 workspaces/false";
 
 /** @type {import('$env/static/private').npm_execpath} */
-export const npm_execpath = "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js";
+export const npm_execpath = "C:\\Users\\PC\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js";
 
 /** @type {import('$env/static/private').npm_lifecycle_event} */
 export const npm_lifecycle_event = "dev";
@@ -153,7 +147,7 @@ export const ORIGINAL_XDG_CURRENT_DESKTOP = "undefined";
 export const OS = "Windows_NT";
 
 /** @type {import('$env/static/private').Path} */
-export const Path = "C:\\Users\\PC\\Desktop\\cogit\\cofounders\\node_modules\\.bin;C:\\Users\\PC\\Desktop\\cogit\\node_modules\\.bin;C:\\Users\\PC\\Desktop\\node_modules\\.bin;C:\\Users\\PC\\node_modules\\.bin;C:\\Users\\node_modules\\.bin;C:\\node_modules\\.bin;C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\@npmcli\\run-script\\lib\\node-gyp-bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\nodejs\\;C:\\Program Files\\Git\\cmd;C:\\Users\\PC\\anaconda3;C:\\Users\\PC\\anaconda3\\Library\\mingw-w64\\bin;C:\\Users\\PC\\anaconda3\\Library\\usr\\bin;C:\\Users\\PC\\anaconda3\\Library\\bin;C:\\Users\\PC\\anaconda3\\Scripts;C:\\Users\\PC\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\PC\\AppData\\Roaming\\npm;C:\\Users\\PC\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\PC\\AppData\\Local\\GitHubDesktop\\bin;C:\\Program Files\\heroku\\bin";
+export const Path = "C:\\Users\\PC\\Desktop\\cogit\\cofounders\\node_modules\\.bin;C:\\Users\\PC\\Desktop\\cogit\\node_modules\\.bin;C:\\Users\\PC\\Desktop\\node_modules\\.bin;C:\\Users\\PC\\node_modules\\.bin;C:\\Users\\node_modules\\.bin;C:\\node_modules\\.bin;C:\\Users\\PC\\AppData\\Roaming\\npm\\node_modules\\npm\\node_modules\\@npmcli\\run-script\\lib\\node-gyp-bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Users\\PC\\anaconda3;C:\\Users\\PC\\anaconda3\\Library\\mingw-w64\\bin;C:\\Users\\PC\\anaconda3\\Library\\usr\\bin;C:\\Users\\PC\\anaconda3\\Library\\bin;C:\\Users\\PC\\anaconda3\\Scripts;C:\\Users\\PC\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\PC\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\PC\\AppData\\Local\\GitHubDesktop\\bin;C:\\Program Files\\heroku\\bin;C:\\Users\\PC\\AppData\\Roaming\\npm";
 
 /** @type {import('$env/static/private').PATHEXT} */
 export const PATHEXT = ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL";

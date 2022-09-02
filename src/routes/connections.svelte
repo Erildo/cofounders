@@ -14,7 +14,8 @@
 		loading,
 		fid = 0,
 		friends_name = '',
-		avatar;
+		avatar,
+		count = 0;
 
 	async function getFriends() {
 		await getFriendship('friends');
@@ -22,7 +23,7 @@
 	async function getRequests() {
 		await getFriendship('Request');
 	}
-	async function openMessages(id,name) {
+	async function openMessages(id, name) {
 		fid = id;
 		friends_name = name;
 	}
@@ -39,6 +40,9 @@
 
 			if (data) {
 				dataArr = data;
+				// if (frienship_status == 'Request') {
+				// 	count = data.length;
+				// }
 			}
 		} catch (error) {
 			console.log(error);
@@ -96,11 +100,10 @@
 						on:click={getRequests}
 						type="button"
 						class="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-						>Requests</button
-					>
+						>Requests
+					</button>
 				</div>
 				<div class="contacts p-2 flex-1 overflow-y-scroll " use:getFriends>
-					
 					{#each dataArr as dt}
 						<div
 							class="flex justify-between items-center p-3 hover:bg-gray-200 rounded-lg relative"
@@ -114,15 +117,17 @@
 							</div>
 							<div class="flex-auto min-w-0 ml-4 mr-6 hidden md:block group-hover:block text-black">
 								<p>
-									<a href="./" on:click={(promise = openMessages(dt.fid,dt.full_name))} >{dt.full_name}</a>
-									{#if dt.full_name == "Bot"}
-									<p>anything interesting today?</p>
-									{:else}
-									<a href={dt.url} target="_blank">
-										<ion-icon name="logo-linkedin" class="w-5 h-5" /></a
+									<a href="./" on:click={(promise = openMessages(dt.fid, dt.full_name))}
+										>{dt.full_name}</a
 									>
+									{#if dt.full_name == 'Bot'}
+										<p>anything interesting today?</p>
+									{:else}
+										<a href={dt.url} target="_blank">
+											<ion-icon name="logo-linkedin" class="w-5 h-5" /></a
+										>
 									{/if}
-									
+
 									{#if dt.status == 'Request'}
 										<button
 											on:click={updateStatus(dt.AddresseeId, dt.RequesterId)}

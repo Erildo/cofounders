@@ -26,9 +26,9 @@
 		showMenu = !showMenu;
 	}
 	let screenWidth;
-
 </script>
-<svelte:window bind:innerWidth={screenWidth}/>
+
+<svelte:window bind:innerWidth={screenWidth} />
 
 <head>
 	<!-- Place this tag in your head or just before your close body tag. -->
@@ -52,7 +52,6 @@
 					<button
 						type="button"
 						on:click={toggle}
-
 						class="text-gray-500 hover:text-gray-300 focus:outline-none focus:text-gray-300"
 						aria-label="toggle menu"
 					>
@@ -66,36 +65,35 @@
 				</div>
 			</div>
 			{#if showMenu == true || screenWidth > 1002}
+				<div class="flex flex-col mt-4  space-y-2 lg:mt-0 lg:flex-row lg:-mx- lg:space-y-0">
+					<a
+						class="text-gray-700 lg:mx-6 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
+						href="#home">Home</a
+					>
+					<a
+						class="text-gray-700 lg:mx-6 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
+						href="#teams">Teams</a
+					>
+					<a
+						class="text-gray-700 lg:mx-6 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
+						href="#tools">Tools</a
+					>
+					<a
+						class="text-gray-700 lg:mx-6 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
+						href="#footer">About Us</a
+					>
+				</div>
 
-			<div class="flex flex-col mt-4  space-y-2 lg:mt-0 lg:flex-row lg:-mx- lg:space-y-0">
-				<a
-					class="text-gray-700 lg:mx-6 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
-					href="#home">Home</a
-				>
-				<a
-					class="text-gray-700 lg:mx-6 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
-					href="#teams">Teams</a
-				>
-				<a
-					class="text-gray-700 lg:mx-6 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
-					href="#tools">Tools</a
-				>
-				<a
-					class="text-gray-700 lg:mx-6 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
-					href="#footer">About Us</a
-				>
-			</div>
-			
-			<form on:submit|preventDefault={signInWithLinkedIn}>
-				<button
-					value={loading ? 'Loading' : 'Sign in with LinkedIn'}
-					disabled={loading}
-					type="submit"
-					class="text-white bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#050708]/50 dark:hover:bg-[#050708]/30 mr-2 mb-2"
-				>
-					<ion-icon class="mr-3" name="logo-linkedin" /> Get in with LinkedIn
-				</button>
-			</form>
+				<form on:submit|preventDefault={signInWithLinkedIn}>
+					<button
+						value={loading ? 'Loading' : 'Sign in with LinkedIn'}
+						disabled={loading}
+						type="submit"
+						class="text-white bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#050708]/50 dark:hover:bg-[#050708]/30 mr-2 mb-2"
+					>
+						<ion-icon class="mr-3" name="logo-linkedin" /> Get in with LinkedIn
+					</button>
+				</form>
 			{/if}
 		</nav>
 
@@ -110,8 +108,18 @@
 					there.
 				</p>
 
-				<div class="w-full ml-36 mt-6 ">
-					<a href="https://www.producthunt.com/posts/cogit?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-cogit" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=357982&theme=light" alt="CoGit - Open&#0045;source&#0032;cofounders&#0032;platform&#0032;for&#0032;startups | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>				</div>
+				<div class="mt-10 sm:ml-14 md:ml-36 lg:ml-36 xl:ml-36 ">
+					<a 
+						href="https://www.producthunt.com/posts/cogit?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-cogit"
+						target="_blank"
+						><img
+							src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=357982&theme=light"
+							alt="CoGit - Open&#0045;source&#0032;cofounders&#0032;platform&#0032;for&#0032;startups | Product Hunt"
+							
+							
+						/></a
+					>
+				</div>
 			</div>
 		</div>
 
@@ -178,7 +186,11 @@
 		>
 			<div>
 				<!-- svelte-ignore a11y-img-redundant-alt -->
-				<img class="w-full hidden dark:block" src="https://github.com/Erildo/cofounders/blob/main/src/images/t.jpg?raw=true" alt="dashboard image" />
+				<img
+					class="w-full hidden dark:block"
+					src="https://github.com/Erildo/cofounders/blob/main/src/images/t.jpg?raw=true"
+					alt="dashboard image"
+				/>
 				<div class="caption text-gray-400">
 					Photo by <a
 						href="https://unsplash.com/@jannerboy62?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
