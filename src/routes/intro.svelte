@@ -380,7 +380,7 @@
 	];
 </script>
 
-<section class="bg-white dark:bg-gray-900 dark">
+<section class="bg-gray-900 ">
 	<div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
 		<h2 class="mb-4 text-4xl tracking-tight font-bold text-center text-gray-900 dark:text-white">
 			Complete your profile
@@ -667,7 +667,7 @@
 				type="submit"
 				value={loading ? 'Loading' : 'Lets Go'}
 				disabled={loading}
-				class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+				class="py-3 px-5 text-sm font-medium text-center text-black dark:text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 				>Lets Go</button
 			>
 		</form>

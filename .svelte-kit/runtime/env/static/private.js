@@ -6,7 +6,7 @@ export const ALLUSERSPROFILE = "C:\\ProgramData";
 export const APPDATA = "C:\\Users\\PC\\AppData\\Roaming";
 
 /** @type {import('$env/static/private').CHROME_CRASHPAD_PIPE_NAME} */
-export const CHROME_CRASHPAD_PIPE_NAME = "\\\\.\\pipe\\crashpad_9628_WCCGJZJKMEDPMWQL";
+export const CHROME_CRASHPAD_PIPE_NAME = "\\\\.\\pipe\\crashpad_5964_WKWDDPNTKOSHJZZR";
 
 /** @type {import('$env/static/private').COLOR} */
 export const COLOR = "1";
@@ -31,6 +31,12 @@ export const DriverData = "C:\\Windows\\System32\\Drivers\\DriverData";
 
 /** @type {import('$env/static/private').EDITOR} */
 export const EDITOR = "notepad.exe";
+
+/** @type {import('$env/static/private').FPS_BROWSER_APP_PROFILE_STRING} */
+export const FPS_BROWSER_APP_PROFILE_STRING = "Internet Explorer";
+
+/** @type {import('$env/static/private').FPS_BROWSER_USER_PROFILE_STRING} */
+export const FPS_BROWSER_USER_PROFILE_STRING = "Default";
 
 /** @type {import('$env/static/private').GIT_ASKPASS} */
 export const GIT_ASKPASS = "c:\\Users\\PC\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh";
@@ -198,7 +204,7 @@ export const TEMP = "C:\\Users\\PC\\AppData\\Local\\Temp";
 export const TERM_PROGRAM = "vscode";
 
 /** @type {import('$env/static/private').TERM_PROGRAM_VERSION} */
-export const TERM_PROGRAM_VERSION = "1.70.2";
+export const TERM_PROGRAM_VERSION = "1.71.0";
 
 /** @type {import('$env/static/private').TMP} */
 export const TMP = "C:\\Users\\PC\\AppData\\Local\\Temp";
