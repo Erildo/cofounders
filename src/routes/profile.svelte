@@ -159,8 +159,10 @@
 								<span
 									class="ml-2 bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300"
 								>
-									{#if co_roles}
+									{#if co_roles.length != 0}
 										{co_roles}
+									{:else}
+										No Preference
 									{/if}
 								</span>
 							</div>
@@ -169,8 +171,10 @@
 								<span
 									class="ml-2 bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300"
 								>
-									{#if co_location}
+									{#if co_location != 0}
 										{co_location}
+									{:else}
+										No Preference
 									{/if}
 								</span>
 								<span
