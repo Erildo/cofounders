@@ -159,19 +159,27 @@
 								<span
 									class="ml-2 bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300"
 								>
-									{co_roles}</span
-								>
+									{#if co_roles}
+										{co_roles}
+									{/if}
+								</span>
 							</div>
 							<div class="flex mb-2 sm:flex-col md:flex-row">
 								<p class="font-semibold">Location:</p>
 								<span
 									class="ml-2 bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300"
-									>{co_location}</span
 								>
+									{#if co_location}
+										{co_location}
+									{/if}
+								</span>
 								<span
 									class="ml-2 bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300"
-									>{co_continent}</span
 								>
+									{#if co_continent}
+										{co_continent}
+									{/if}
+								</span>
 							</div>
 
 							<textarea
