@@ -6,7 +6,7 @@ export const ALLUSERSPROFILE = "C:\\ProgramData";
 export const APPDATA = "C:\\Users\\PC\\AppData\\Roaming";
 
 /** @type {import('$env/static/private').CHROME_CRASHPAD_PIPE_NAME} */
-export const CHROME_CRASHPAD_PIPE_NAME = "\\\\.\\pipe\\crashpad_5964_WKWDDPNTKOSHJZZR";
+export const CHROME_CRASHPAD_PIPE_NAME = "\\\\.\\pipe\\crashpad_1608_QRJRIAQOVXPJTYUW";
 
 /** @type {import('$env/static/private').COLOR} */
 export const COLOR = "1";
@@ -231,7 +231,7 @@ export const VSCODE_GIT_ASKPASS_MAIN = "c:\\Users\\PC\\AppData\\Local\\Programs\
 export const VSCODE_GIT_ASKPASS_NODE = "C:\\Users\\PC\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe";
 
 /** @type {import('$env/static/private').VSCODE_GIT_IPC_HANDLE} */
-export const VSCODE_GIT_IPC_HANDLE = "\\\\.\\pipe\\vscode-git-53d2694886-sock";
+export const VSCODE_GIT_IPC_HANDLE = "\\\\.\\pipe\\vscode-git-8623d51cd9-sock";
 
 /** @type {import('$env/static/private').windir} */
 export const windir = "C:\\WINDOWS";

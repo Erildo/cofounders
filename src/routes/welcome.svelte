@@ -26,6 +26,10 @@
 		showMenu = !showMenu;
 	}
 	let screenWidth;
+	let cookie = true;
+	function showF() {
+        cookie = !cookie;
+	}
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
@@ -109,14 +113,12 @@
 				</p>
 
 				<div class="mt-10 sm:ml-14 md:ml-36 lg:ml-36 xl:ml-36 ">
-					<a 
+					<a
 						href="https://www.producthunt.com/posts/cogit?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-cogit"
 						target="_blank"
 						><img
 							src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=357982&theme=light"
 							alt="CoGit - Open&#0045;source&#0032;cofounders&#0032;platform&#0032;for&#0032;startups | Product Hunt"
-							
-							
 						/></a
 					>
 				</div>
@@ -260,9 +262,28 @@
 					>
 				</li>
 			</ul>
+		
 			<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
 				>© 2022 {PUBLIC_NAME} All Rights Reserved.</span
 			>
 		</div>
 	</footer>
 </body>
+
+
+
+{#if cookie}
+<div class="fixed bottom-4 left-1 lg:left-4 p-2 bg-white border-t-4 shadow-lg">
+	<h2 class="text-lg lg:text-xl mb-1 block font-bold leading-tight text-gray-600">Cookie Policy</h2>
+	<div class="lg:flex lg:space-x-5">
+		<img class=" w-10 h-10" src="https://www.svgrepo.com/show/30963/cookie.svg" alt="Cookie Icon SVG">
+		<span class="w-full sm:w-48  block leading-normal text-gray-800 text-md mb-3">We use cookies to provide a better user experience.</span>
+		<div class="flex items-center justify-between">
+			<a class="text-xs text-gray-400 mr-1 hover:text-gray-800" href="./cookies">Privacy Policy</a>
+			<div class="w-1/2">
+			  <button type="button" on:click={showF} class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">Accept</button>
+			</div>
+		  </div>
+	</div>
+</div>
+{/if}
