@@ -18,12 +18,20 @@
 
 	async function BeyBey() {
 		const user = supabase.auth.user();
+		// try {
+		// 	const { data: user, error } = await supabase.auth.api.deleteUser(user.id);
+		// 	if (error) throw error;
+		// 	goto("./index");
+		// } catch (error) {
+		// 	alert(error.message);
+		// }
+
 		try {
-			const { data: user, error } = await supabase.auth.api.deleteUser(user.id);
+			const { error } = await supabase.auth.signOut();
 			if (error) throw error;
-			goto("./index");
+			goto('./');
 		} catch (error) {
-			alert(error.message);
+			// console.log(error);
 		}
 	}
 	async function getProfile() {
@@ -134,6 +142,7 @@
 			</div>
 
 			<div class="flex">
+				<div class="flex items-center mr-4">
 				<div class="flex items-center mr-4">
 					<input
 						type="radio"

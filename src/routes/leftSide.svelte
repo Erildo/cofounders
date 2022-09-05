@@ -28,7 +28,7 @@
 			let { data, error, status } = await supabase.from('profiles').select('avatar');
 			if (error) throw error;
 			if (data) {
-				avatarArr = data.splice(4);
+				avatarArr = data.splice(7);
 			}
 		} catch (error) {
 			// smth here

@@ -176,7 +176,6 @@
 			</div>
 			<form on:submit|preventDefault={sendMessage}>
 				<button
-					on:click={sendMessage}
 					value={loading ? 'Loading' : ''}
 					disabled={loading}
 					type="submit"

@@ -12,12 +12,14 @@
 	import Startups from './startups.svelte';
 	import Connections from './connections.svelte';
 	import NotFound from './404.svelte';
+	import Exchange from './exchange.svelte';
 
 	let full_name, avatar;
 	let elements = [
 		{ icon: 'compass-sharp', name: 'Dashboard', page: 'Profile' },
 		{ icon: 'people-sharp', name: 'Connections', page: 'Connections' },
 		{ icon: 'flask-sharp', name: 'Start-Ups', page: 'Startups' },
+		{ icon: 'ice-cream-sharp', name: 'Xchange', page: 'Exchange' },
 		{ icon: 'settings-sharp', name: 'Settings', page: 'Settings' }
 	];
 	let rightPage = 'Profile';
@@ -85,28 +87,28 @@
 				<div
 					class="absolute left-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-100"
 				>
-				{#each elements as { icon, name, page }, i}
-					<a
-						value={elements.page}
-						on:click={() => {
-							rightPage = page;
-						}}
-					
-						href="./"
-						class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-100 dark:hover:text-black"
-					><ion-icon name={icon} />
-					<span class="mx-2">{name}</span>	
-				
-				</a>
-				{/each}
-					<a on:click={signout}
+					{#each elements as { icon, name, page }, i}
+						<a
+							value={elements.page}
+							on:click={() => {
+								rightPage = page;
+							}}
+							href="./"
+							class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-100 dark:hover:text-black"
+							><ion-icon name={icon} />
+							<span class="mx-2">{name}</span>
+						</a>
+					{/each}
 
+					<a
+						on:click={signout}
 						href="./"
 						class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-100 dark:hover:text-black"
 					>
-					<ion-icon name="log-in-sharp" />
-					<span class="mx-2">Sign Out</span>
+						<ion-icon name="log-in-sharp" />
+						<span class="mx-2">Sign Out</span>
 					</a>
+
 				</div>
 			{/if}
 		</div>
@@ -134,7 +136,7 @@
 						<ion-icon name={icon} />
 						<span class="mx-4 font-medium ">{name}</span>
 					</a>
-					{#if i == 2}
+					{#if i == 3}
 						<hr class="my-6 border-gray-200 dark:border-gray-600" />
 						<a
 							on:click={signout}
@@ -147,7 +149,9 @@
 					{/if}
 				{/each}
 			</nav>
-			<div id="dropdown-cta" class="p-4 mt-6 bg-blue-50 rounded-lg dark:bg-blue-900 hidden md:block"
+			<div
+				id="dropdown-cta"
+				class="p-4 mt-6 bg-blue-50 rounded-lg dark:bg-blue-900 hidden md:block"
 				role="alert"
 			>
 				<div class="flex items-center mb-3">
@@ -186,6 +190,8 @@
 			<Startups />
 		{:else if rightPage == 'Connections'}
 			<Connections />
+		{:else if rightPage == 'Exchange'}
+			<Exchange />
 		{:else}
 			<NotFound />
 		{/if}
